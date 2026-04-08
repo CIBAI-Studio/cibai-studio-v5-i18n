@@ -1,0 +1,226 @@
+{
+  "hero": {
+    "badge_studio": "CIBAI_STUDIO",
+    "badge_location": "BERGA, BARCELONA, ESPANYA",
+    "badge_status": "STATUS: ONLINE",
+    "h1_line1": "FEM EL WEB",
+    "h1_line2": "MÉS",
+    "h1_line3": "BRUTAL",
+    "h1_full": "FEM EL WEB MÉS BRUTAL",
+    "terminal_cmd": "cibai",
+    "terminal_flag": "--init",
+    "typing_line1": "> Desenvolupem llocs web i webapps que impacten.",
+    "typing_line2": "> Sense artificis. Sense genèrics. Sense compromís.",
+    "typing_line3": "> Ready.",
+    "btn_project": "Sol·licitar Projecte",
+    "btn_portfolio": "Veure Projectes",
+    "slide2_badge1": "PROTOCOL_V2",
+    "slide2_badge2": "CODI + DISSENY + IA",
+    "slide2_badge3": "SIGNAL: ACTIVE",
+    "h2_line1": "LA TEVA IDEA",
+    "h2_line2": "EL NOSTRE",
+    "h2_line3": "CODI",
+    "h2_full": "LA TEVA IDEA EL NOSTRE CODI",
+    "slide2_terminal_cmd": "deploy",
+    "slide2_terminal_flag": "--mode=brutal",
+    "slide2_terminal_line1": "> Webs, webapps i automatitzacions amb IA.",
+    "slide2_terminal_line2": "> Del concepte al deploy en setmanes, no mesos.",
+    "slide2_terminal_line3": "> Deploy completat.",
+    "btn_services": "Veure Serveis",
+    "btn_contact": "Contactar",
+    "scroll": "Scroll"
+  },
+  "nav": {
+    "inicio": "Inici",
+    "servicios": "Serveis",
+    "proceso": "Procés",
+    "portfolio": "Portfolio",
+    "studio": "Studio",
+    "proyecto": "PROJECTE",
+    "solicitar_proyecto": "SOL·LICITAR PROJECTE",
+    "abrir_menu": "Obrir menú de navegació",
+    "skip_content": "Saltar al contingut principal"
+  },
+  "hud": {
+    "sys_online": "SYS.ONLINE",
+    "node_active": "NODE_ACTIVE",
+    "ping": "PING:",
+    "uptime": "UPTIME:",
+    "rec": "REC"
+  },
+  "servicios": {
+    "section_label": "// SERVEIS",
+    "title_line1": "ELS NOSTRES",
+    "title_line2": "SISTEMES",
+    "items": [
+      {
+        "num": "01",
+        "label": "DISSENY_WEB",
+        "title": "Disseny Web Premium",
+        "description": "Interfícies visuals que converteixen. Disseny UI/UX amb identitat de marca, tipografia d'alt contrast i animacions amb propòsit. Res genèric, tot a mida.",
+        "tags": ["UI/UX", "FIGMA", "BRANDING"]
+      },
+      {
+        "num": "02",
+        "label": "WEBAPPS_MIDA",
+        "title": "Webapps a Mida",
+        "description": "Aplicacions web completes des de zero. React, Next.js, APIs, autenticació i dashboards. Solucions que escalen amb el teu negoci i s'adapten als teus processos.",
+        "tags": ["NEXT.JS", "REACT", "TS", "TRPC"]
+      },
+      {
+        "num": "03",
+        "label": "COMERÇ_ELECTRÒNIC",
+        "title": "Comerç Electrònic",
+        "description": "Botigues online d'alt rendiment. Integració amb passarel·les de pagament, gestió d'inventari, panell d'administració i optimització per a conversió màxima.",
+        "tags": ["SHOPIFY", "STRIPE", "NEXT.JS"]
+      },
+      {
+        "num": "04",
+        "label": "SOLUCIONS_MIDA",
+        "title": "Solucions a Mida",
+        "description": "Des d'integracions de tercers fins a sistemes complexos. Si tens un problema tècnic específic, el resolem amb l'stack més adequat per al teu cas.",
+        "tags": ["NODE.JS", "POSTGRES", "REST", "DEPLOY"]
+      }
+    ]
+  },
+  "proceso": {
+    "section_label": "// PROCÉS",
+    "title": "PROCÉS",
+    "subtitle": "Cada projecte passa per 5 fases. Res es deixa a l'atzar. Tot s'executa amb precisió militar.",
+    "btn_start": "Iniciar el teu projecte",
+    "steps": [
+      {
+        "num": "01",
+        "title": "BRIEFING",
+        "description": "Entenem la teva visió, els teus objectius i els reptes que vols resoldre. Sense briefing sòlid no hi ha projecte sòlid."
+      },
+      {
+        "num": "02",
+        "title": "DISSENY",
+        "description": "Cada píxel, cada interacció pensada des de l'estratègia. Prototipem abans d'escriure una línia de codi."
+      },
+      {
+        "num": "03",
+        "title": "DESENVOLUPAMENT",
+        "description": "Codi net, modular i documentat. Sprints àgils amb lliuraments regulars. Veus el progrés des del dia u."
+      },
+      {
+        "num": "04",
+        "title": "REVISIÓ",
+        "description": "Iterem amb tu fins que el resultat no només compleixi les teves expectatives, sinó que les superi amb escreix."
+      },
+      {
+        "num": "05",
+        "title": "LLANÇAMENT",
+        "description": "Deploy controlat, verificacions tècniques i posada en marxa. El llançament és el principi, no el final."
+      }
+    ]
+  },
+  "portfolio": {
+    "section_label": "// PORTFOLIO",
+    "title": "PORTFOLIO",
+    "subtitle": "Projectes que parlen per nosaltres. Cadascun és una història de transformació.",
+    "items": [
+      {
+        "title": "VOLKANIK STUDIO",
+        "category": "Disseny Web + Branding"
+      },
+      {
+        "title": "ANTREX SAAS",
+        "category": "Webapp + Automatització"
+      },
+      {
+        "title": "RAYA EDITORIAL",
+        "category": "E-commerce + SEO"
+      },
+      {
+        "title": "NEROMA LABS",
+        "category": "Desenvolupament Full-Stack"
+      }
+    ]
+  },
+  "studio": {
+    "section_label": "// STUDIO",
+    "title": "STUDIO",
+    "subtitle": "Un equip de dos que construeix com deu.",
+    "philosophy_label": "// FILOSOFIA",
+    "blockquote": "Creiem que el codi ben escrit i el disseny brutal no són oposats. Són el mateix.",
+    "description": "CIBAI va néixer de la convicció que la majoria de webs són mediocres per elecció, no per necessitat. Fem el contrari: prenem cada decisió amb intenció i lliurem només el que ens enorgulleix.",
+    "stat1_value": "47",
+    "stat1_suffix": "Projectes",
+    "stat1_label": "LLIURATS",
+    "stat2_value": "100",
+    "stat2_suffix": "%",
+    "stat2_label": "CODI FUNCIONAL",
+    "stat3_value": "< 48",
+    "stat3_suffix": "h",
+    "stat3_label": "RESPOSTA INICIAL",
+    "values_label": "// VALORS",
+    "values": [
+      {
+        "num": "01",
+        "title": "BRUTALITAT",
+        "description": "El disseny que no fa declaracions no diu res. Cada decisió visual és una posició."
+      },
+      {
+        "num": "02",
+        "title": "PRECISIÓ",
+        "description": "Un píxel fora de lloc és un error. No lliurem fins que el codi i el disseny coincideixin exactament."
+      },
+      {
+        "num": "03",
+        "title": "VELOCITAT",
+        "description": "Els terminis no són suggeriments. Treballem ràpid sense comprometre ni un mil·límetre de qualitat."
+      }
+    ]
+  },
+  "contacto": {
+    "section_label": "// CONTACTE",
+    "title": "Parlem del que necessites.",
+    "subtitle": "Primera consulta gratuïta. Sense compromisos. Només una conversa honesta sobre com podem ajudar-te a créixer.",
+    "label_nombre": "NOM",
+    "placeholder_nombre": "El teu nom",
+    "label_email": "EMAIL",
+    "placeholder_email": "tu@email.com",
+    "label_proyecto": "TIPUS DE PROJECTE",
+    "option_web": "Disseny Web",
+    "option_webapp": "Webapp a Mida",
+    "option_ecommerce": "E-commerce",
+    "option_automatizacion": "Automatització",
+    "option_otro": "Altre",
+    "label_mensaje": "MISSATGE",
+    "placeholder_mensaje": "Descriu el teu projecte...",
+    "btn_enviar": "Enviar Projecte",
+    "terminal_path": "cibai@studio:~/projectes",
+    "terminal_empresa": "CIBAI Studio",
+    "terminal_ubicacion": "Berga, Barcelona, Espanya",
+    "terminal_email": "hola@cibai.studio",
+    "terminal_horario": "Dll-Div 9:00-18:00h",
+    "terminal_status": "Disponibles per a projectes",
+    "terminal_uptime": "online 365 days, load avg: 0.02, 0.01, 0.00",
+    "terminal_respuesta1": "Responem en menys de 48h.",
+    "terminal_respuesta2": "Primera consulta gratuïta.",
+    "terminal_respuesta3": "Sense compromisos.",
+    "form_success": "Missatge rebut. Respondrem en <48h."
+  },
+  "footer": {
+    "descripcion": "Agència especialitzada en desenvolupament web, automatització i intel·ligència artificial.",
+    "disponibles": "Disponibles per a nous projectes",
+    "nav_label": "NAVEGACIÓ",
+    "legal_label": "LEGAL",
+    "link_inicio": "Inici",
+    "link_servicios": "Serveis",
+    "link_portfolio": "Portfolio",
+    "link_studio": "Studio",
+    "link_privacidad": "Política de privacitat",
+    "link_aviso": "Avís legal",
+    "link_cookies": "Política de cookies",
+    "copyright": "© 2026 CIBAI Studio. Tots els drets reservats.",
+    "made_in": "Fet amb intensitat a Barcelona"
+  },
+  "meta": {
+    "title": "CIBAI Studio — Fem el web brutal",
+    "description": "Agència de disseny web, desenvolupament d'aplicacions i intel·ligència artificial per a empreses a Espanya. Disseny cyberpunk, codi brutal, resultats reals.",
+    "schema_description": "Agència de disseny web, desenvolupament d'aplicacions i intel·ligència artificial per a empreses a Espanya."
+  }
+}

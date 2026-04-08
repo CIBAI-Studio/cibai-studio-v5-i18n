@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cibai.studio/sitemap-index.xml

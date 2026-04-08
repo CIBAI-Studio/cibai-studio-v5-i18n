@@ -1,0 +1,226 @@
+{
+  "hero": {
+    "badge_studio": "CIBAI_STUDIO",
+    "badge_location": "BERGA, BARCELONA, ESPAÑA",
+    "badge_status": "STATUS: ONLINE",
+    "h1_line1": "HACEMOS",
+    "h1_line2": "LA WEB",
+    "h1_line3": "BRUTAL",
+    "h1_full": "HACEMOS LA WEB BRUTAL",
+    "terminal_cmd": "cibai",
+    "terminal_flag": "--init",
+    "typing_line1": "> Desarrollamos sitios web y webapps que impactan.",
+    "typing_line2": "> Sin artificios. Sin genéricos. Sin compromiso.",
+    "typing_line3": "> Ready.",
+    "btn_project": "Solicitar Proyecto",
+    "btn_portfolio": "Ver Proyectos",
+    "slide2_badge1": "PROTOCOL_V2",
+    "slide2_badge2": "CÓDIGO + DISEÑO + IA",
+    "slide2_badge3": "SIGNAL: ACTIVE",
+    "h2_line1": "TU IDEA",
+    "h2_line2": "NUESTRO",
+    "h2_line3": "CÓDIGO",
+    "h2_full": "TU IDEA NUESTRO CÓDIGO",
+    "slide2_terminal_cmd": "deploy",
+    "slide2_terminal_flag": "--mode=brutal",
+    "slide2_terminal_line1": "> Webs, webapps y automatizaciones con IA.",
+    "slide2_terminal_line2": "> Del concepto al deploy en semanas, no meses.",
+    "slide2_terminal_line3": "> Deploy completado.",
+    "btn_services": "Ver Servicios",
+    "btn_contact": "Contactar",
+    "scroll": "Scroll"
+  },
+  "nav": {
+    "inicio": "Inicio",
+    "servicios": "Servicios",
+    "proceso": "Proceso",
+    "portfolio": "Portfolio",
+    "studio": "Studio",
+    "proyecto": "PROYECTO",
+    "solicitar_proyecto": "SOLICITAR PROYECTO",
+    "abrir_menu": "Abrir menú de navegación",
+    "skip_content": "Saltar al contenido principal"
+  },
+  "hud": {
+    "sys_online": "SYS.ONLINE",
+    "node_active": "NODE_ACTIVE",
+    "ping": "PING:",
+    "uptime": "UPTIME:",
+    "rec": "REC"
+  },
+  "servicios": {
+    "section_label": "// SERVICIOS",
+    "title_line1": "NUESTROS",
+    "title_line2": "SISTEMAS",
+    "items": [
+      {
+        "num": "01",
+        "label": "DISEÑO_WEB",
+        "title": "Diseño Web Premium",
+        "description": "Interfaces visuales que convierten. Diseño UI/UX con identidad de marca, tipografía de alto contraste y animaciones con propósito. Nada genérico, todo a medida.",
+        "tags": ["UI/UX", "FIGMA", "BRANDING"]
+      },
+      {
+        "num": "02",
+        "label": "WEBAPPS_MEDIDA",
+        "title": "Webapps a Medida",
+        "description": "Aplicaciones web completas desde cero. React, Next.js, APIs, autenticación y dashboards. Soluciones por escalón con tu negocio y se adaptan a tus procesos.",
+        "tags": ["NEXT.JS", "REACT", "TS", "TRPC"]
+      },
+      {
+        "num": "03",
+        "label": "COMERCIO_ELECTRÓNICO",
+        "title": "Comercio Electrónico",
+        "description": "Tiendas online de alto rendimiento. Integración con pasarelas de pago, gestión de inventario, panel de administración y optimización para conversión máxima.",
+        "tags": ["SHOPIFY", "STRIPE", "NEXT.JS"]
+      },
+      {
+        "num": "04",
+        "label": "SOLUCIONES_MEDIDA",
+        "title": "Soluciones a Medida",
+        "description": "Desde integraciones de terceros hasta sistemas complejos. Si tienes un problema técnico específico, lo resolvemos con el stack más adecuado para tu caso.",
+        "tags": ["NODE.JS", "POSTGRES", "REST", "DEPLOY"]
+      }
+    ]
+  },
+  "proceso": {
+    "section_label": "// PROCESO",
+    "title": "PROCESO",
+    "subtitle": "Cada proyecto pasa por 5 fases. Nada se deja al azar. Todo se ejecuta con precisión militar.",
+    "btn_start": "Iniciar tu proyecto",
+    "steps": [
+      {
+        "num": "01",
+        "title": "BRIEFING",
+        "description": "Entendemos tu visión, tus objetivos y los retos que quieres resolver. Sin briefing sólido no hay proyecto sólido."
+      },
+      {
+        "num": "02",
+        "title": "DISEÑO",
+        "description": "Cada pixel, cada interacción pensada desde la estrategia. Prototipamos antes de escribir una línea de código."
+      },
+      {
+        "num": "03",
+        "title": "DESARROLLO",
+        "description": "Código limpio, modular y documentado. Sprints ágiles con entregas regulares. Ves el progreso desde el día uno."
+      },
+      {
+        "num": "04",
+        "title": "REVISIÓN",
+        "description": "Iteramos contigo hasta que el resultado no solo cumpla tus expectativas, sino que las supere con creces."
+      },
+      {
+        "num": "05",
+        "title": "LANZAMIENTO",
+        "description": "Deploy controlado, verificaciones técnicas y puesta en marcha. El lanzamiento es el principio, no el final."
+      }
+    ]
+  },
+  "portfolio": {
+    "section_label": "// PORTFOLIO",
+    "title": "PORTFOLIO",
+    "subtitle": "Proyectos que hablan por nosotros. Cada uno es una historia de transformación.",
+    "items": [
+      {
+        "title": "VOLKANIK STUDIO",
+        "category": "Diseño Web + Branding"
+      },
+      {
+        "title": "ANTREX SAAS",
+        "category": "Webapp + Automatización"
+      },
+      {
+        "title": "RAYA EDITORIAL",
+        "category": "E-commerce + SEO"
+      },
+      {
+        "title": "NEROMA LABS",
+        "category": "Desarrollo Full-Stack"
+      }
+    ]
+  },
+  "studio": {
+    "section_label": "// STUDIO",
+    "title": "STUDIO",
+    "subtitle": "Un equipo de dos que construye como diez.",
+    "philosophy_label": "// FILOSOFÍA",
+    "blockquote": "Creemos que el código bien escrito y el diseño brutal no son opuestos. Son lo mismo.",
+    "description": "CIBAI nació de la convicción de que la mayoría de las webs son mediocres por elección, no por necesidad. Hacemos lo contrario: tomamos cada decisión con intención y entregamos solo lo que nos enorgullece.",
+    "stat1_value": "47",
+    "stat1_suffix": "Proyectos",
+    "stat1_label": "ENTREGADOS",
+    "stat2_value": "100",
+    "stat2_suffix": "%",
+    "stat2_label": "CÓDIGO FUNCIONAL",
+    "stat3_value": "< 48",
+    "stat3_suffix": "h",
+    "stat3_label": "RESPUESTA INICIAL",
+    "values_label": "// VALORES",
+    "values": [
+      {
+        "num": "01",
+        "title": "BRUTALIDAD",
+        "description": "El diseño que no hace declaraciones no dice nada. Cada decisión visual es una posición."
+      },
+      {
+        "num": "02",
+        "title": "PRECISIÓN",
+        "description": "Un píxel fuera de lugar es un error. No entregamos hasta que el código y el diseño coincidan exactamente."
+      },
+      {
+        "num": "03",
+        "title": "VELOCIDAD",
+        "description": "Los plazos no son sugerencias. Trabajamos rápido sin comprometer ni un milímetro de calidad."
+      }
+    ]
+  },
+  "contacto": {
+    "section_label": "// CONTACTO",
+    "title": "Hablemos de lo que necesitas.",
+    "subtitle": "Primera consulta gratuita. Sin compromisos. Solo una conversación honesta sobre cómo podemos ayudarte a crecer.",
+    "label_nombre": "NOMBRE",
+    "placeholder_nombre": "Tu nombre",
+    "label_email": "EMAIL",
+    "placeholder_email": "tu@email.com",
+    "label_proyecto": "TIPO DE PROYECTO",
+    "option_web": "Diseño Web",
+    "option_webapp": "Webapp a Medida",
+    "option_ecommerce": "E-commerce",
+    "option_automatizacion": "Automatización",
+    "option_otro": "Otro",
+    "label_mensaje": "MENSAJE",
+    "placeholder_mensaje": "Describe tu proyecto...",
+    "btn_enviar": "Enviar Proyecto",
+    "terminal_path": "cibai@studio:~/proyectos",
+    "terminal_empresa": "CIBAI Studio",
+    "terminal_ubicacion": "Berga, Barcelona, España",
+    "terminal_email": "hola@cibai.studio",
+    "terminal_horario": "Lun-Vie 9:00-18:00h",
+    "terminal_status": "Disponibles para proyectos",
+    "terminal_uptime": "online 365 days, load avg: 0.02, 0.01, 0.00",
+    "terminal_respuesta1": "Respondemos en menos de 48h.",
+    "terminal_respuesta2": "Primera consulta gratuita.",
+    "terminal_respuesta3": "Sin compromisos.",
+    "form_success": "Mensaje recibido. Responderemos en <48h."
+  },
+  "footer": {
+    "descripcion": "Agencia especializada en desarrollo web, automatización e inteligencia artificial.",
+    "disponibles": "Disponibles para nuevos proyectos",
+    "nav_label": "NAVEGACIÓN",
+    "legal_label": "LEGAL",
+    "link_inicio": "Inicio",
+    "link_servicios": "Servicios",
+    "link_portfolio": "Portfolio",
+    "link_studio": "Studio",
+    "link_privacidad": "Política de privacidad",
+    "link_aviso": "Aviso legal",
+    "link_cookies": "Política de cookies",
+    "copyright": "© 2026 CIBAI Studio. Todos los derechos reservados.",
+    "made_in": "Hecho con intensidad en Barcelona"
+  },
+  "meta": {
+    "title": "CIBAI Studio — Hacemos la web brutal",
+    "description": "Agencia de diseño web, desarrollo de aplicaciones e inteligencia artificial para empresas en España. Diseño cyberpunk, código brutal, resultados reales.",
+    "schema_description": "Agencia de diseño web, desarrollo de aplicaciones e inteligencia artificial para empresas en España."
+  }
+}

@@ -1,0 +1,660 @@
+---
+import type { Locale } from '../i18n';
+import { getTranslations, getLocalizedPath } from '../i18n';
+import LanguageSelector from './LanguageSelector.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+
+const portfolioImages = [
+  'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop',
+];
+
+const tickerItems = ['ASTRO', 'NEXT.JS', 'REACT', 'TAILWIND', 'TYPESCRIPT', 'NODE.JS', 'POSTGRES', 'SUPABASE', 'VERCEL', 'FIGMA', 'AI/ML', 'PYTHON', 'GRAPHQL', 'DOCKER'];
+---
+
+<!-- ═══════════════ TOP BAR (HUD) ═══════════════ -->
+<div class="fixed top-0 left-0 right-0 z-50 bg-cyber-black border-b border-cyber-border/50">
+  <div class="mx-auto max-w-7xl px-6 flex items-center justify-between h-8">
+    <div class="flex items-center gap-4">
+      <span class="hud-blink inline-block w-1.5 h-1.5 rounded-full bg-cyber-teal"></span>
+      <span class="font-mono text-[9px] text-cyber-text/60 uppercase tracking-widest">{t.hud.sys_online}</span>
+      <span class="font-mono text-[9px] text-cyber-border">|</span>
+      <span class="font-mono text-[9px] text-cyber-teal/70">{t.hud.node_active}</span>
+      <span class="hud-blink-slow inline-block w-1 h-1 rounded-full bg-cyber-orange ml-1"></span>
+    </div>
+    <div class="hidden sm:flex items-center gap-4">
+      <span class="font-mono text-[9px] text-cyber-text/40">{t.hud.ping} <span class="text-cyber-teal/70">8ms</span></span>
+      <span class="font-mono text-[9px] text-cyber-border">|</span>
+      <span class="font-mono text-[9px] text-cyber-text/40">{t.hud.uptime} <span class="text-cyber-orange/70">99.9%</span></span>
+      <span class="font-mono text-[9px] text-cyber-border">|</span>
+      <span class="hud-blink inline-block w-1.5 h-1.5 rounded-full bg-cyber-red"></span>
+      <span class="font-mono text-[9px] text-cyber-text/40">{t.hud.rec}</span>
+      <span class="font-mono text-[9px] text-cyber-border">|</span>
+      <span class="font-mono text-[9px] text-cyber-text/40" id="hud-clock">00:00:00</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="fixed top-8 left-0 right-0 z-50 border-b border-cyber-border bg-cyber-black/90 backdrop-blur-md">
+  <div class="mx-auto max-w-7xl px-6 flex items-center justify-between h-16">
+    <a href={getLocalizedPath('/', locale)} class="flex items-center gap-1">
+      <span class="text-lg font-bold tracking-tight text-cyber-white">CIBAI</span>
+      <span class="text-lg font-bold tracking-tight text-cyber-orange">.</span>
+      <span class="text-lg font-light tracking-tight text-cyber-orange">STUDIO</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#main-content" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.inicio}</a>
+      <a href="#servicios" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.servicios}</a>
+      <a href="#proceso" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.proceso}</a>
+      <a href="#portfolio" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.portfolio}</a>
+      <a href="#studio" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.studio}</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <LanguageSelector currentLocale={locale} />
+      <a href="#contacto" class="btn-primary text-xs py-2 px-5 hidden sm:inline-flex">{t.nav.proyecto}</a>
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 border border-cyber-border hover:border-cyber-orange transition-colors"
+        aria-label={t.nav.abrir_menu}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300"></span>
+        <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300 mt-1.5"></span>
+        <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300 mt-1.5"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden border-t border-cyber-border bg-cyber-black/95 backdrop-blur-md">
+    <div class="px-6 py-6 space-y-4">
+      <a href="#main-content" class="mobile-nav-link block font-mono text-sm uppercase tracking-widest text-cyber-text hover:text-cyber-orange transition-colors py-2">{t.nav.inicio}</a>
+      <a href="#servicios" class="mobile-nav-link block font-mono text-sm uppercase tracking-widest text-cyber-text hover:text-cyber-orange transition-colors py-2">{t.nav.servicios}</a>
+      <a href="#proceso" class="mobile-nav-link block font-mono text-sm uppercase tracking-widest text-cyber-text hover:text-cyber-orange transition-colors py-2">{t.nav.proceso}</a>
+      <a href="#portfolio" class="mobile-nav-link block font-mono text-sm uppercase tracking-widest text-cyber-text hover:text-cyber-orange transition-colors py-2">{t.nav.portfolio}</a>
+      <a href="#studio" class="mobile-nav-link block font-mono text-sm uppercase tracking-widest text-cyber-text hover:text-cyber-orange transition-colors py-2">{t.nav.studio}</a>
+      <div class="pt-4 border-t border-cyber-border">
+        <a href="#contacto" class="btn-primary text-xs w-full justify-center">{t.nav.solicitar_proyecto}</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="main-content" class="relative min-h-[90vh] flex flex-col justify-start pt-32 pb-8 overflow-hidden hero-section">
+  <div class="absolute inset-0 opacity-[0.03] hero-bg-grid" style="background-image: linear-gradient(rgba(255,77,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,77,0,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="mx-auto max-w-7xl px-6 w-full">
+    <div class="relative" style="min-height: 420px;" id="hero-slider">
+      <div class="absolute top-0 right-0 flex items-center gap-4 z-10 animate-fade-in-up animate-delay-500">
+        <div class="hero-slider-dots" id="hero-dots">
+          <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+          <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="hero-slide-progress">
+          <div class="hero-slide-progress-bar" id="hero-progress"></div>
+        </div>
+        <span class="font-mono text-[9px] text-cyber-text/50" id="hero-slide-counter">01 / 02</span>
+      </div>
+
+      <div class="max-w-4xl relative" style="min-height: 420px;">
+        <!-- Slide 1 -->
+        <div class="hero-slide active" id="hero-slide-0">
+          <div class="font-mono text-xs text-cyber-text mb-6 animate-fade-in-up">
+            <span class="text-cyber-orange">{t.hero.badge_studio}</span>
+            <span class="mx-2 text-cyber-border">//</span>
+            <span>{t.hero.badge_location}</span>
+            <span class="mx-2 text-cyber-border">//</span>
+            <span class="text-cyber-teal">{t.hero.badge_status}</span>
+          </div>
+
+          <h1 class="text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] tracking-tighter mb-8 animate-fade-in-up animate-delay-100 glitch-text" data-text={t.hero.h1_full}>
+            {t.hero.h1_line1}<br/>
+            {t.hero.h1_line2}<br/>
+            <span class="text-cyber-orange glow-orange">{t.hero.h1_line3}</span>
+          </h1>
+
+          <div class="mb-10 animate-fade-in-up animate-delay-200">
+            <div class="font-mono text-sm text-cyber-text max-w-xl leading-relaxed bg-cyber-dark/80 border border-cyber-border p-4">
+              <span class="text-cyber-orange">$</span><span class="text-cyber-teal ml-1">{t.hero.terminal_cmd}</span><span class="text-cyber-text ml-1">{t.hero.terminal_flag}</span>
+              <div class="mt-2" id="typing-container">
+                <span id="typing-text" class="text-cyber-text/90"></span><span class="typing-cursor text-cyber-orange">█</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4 mb-6 animate-fade-in-up animate-delay-300">
+            <a href="#contacto" class="btn-primary btn-glitch">
+              {t.hero.btn_project}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#portfolio" class="btn-secondary btn-glitch">{t.hero.btn_portfolio}</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide" id="hero-slide-1">
+          <div class="font-mono text-xs text-cyber-text mb-6">
+            <span class="text-cyber-teal">{t.hero.slide2_badge1}</span>
+            <span class="mx-2 text-cyber-border">//</span>
+            <span>{t.hero.slide2_badge2}</span>
+            <span class="mx-2 text-cyber-border">//</span>
+            <span class="text-cyber-orange">{t.hero.slide2_badge3}</span>
+          </div>
+
+          <h2 class="text-[clamp(3rem,8vw,7rem)] font-black leading-[0.9] tracking-tighter mb-8 glitch-text" data-text={t.hero.h2_full}>
+            {t.hero.h2_line1}<br/>
+            {t.hero.h2_line2}<br/>
+            <span class="text-cyber-teal glow-teal">{t.hero.h2_line3}</span>
+          </h2>
+
+          <div class="mb-10">
+            <div class="font-mono text-sm text-cyber-text max-w-xl leading-relaxed bg-cyber-dark/80 border border-cyber-border p-4">
+              <span class="text-cyber-orange">$</span><span class="text-cyber-teal ml-1">{t.hero.slide2_terminal_cmd}</span><span class="text-cyber-text ml-1">{t.hero.slide2_terminal_flag}</span>
+              <div class="mt-2 text-cyber-text/90">
+                {t.hero.slide2_terminal_line1}<br/>
+                {t.hero.slide2_terminal_line2}<br/>
+                <span class="text-cyber-teal">{t.hero.slide2_terminal_line3}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4 mb-6">
+            <a href="#servicios" class="btn-primary btn-glitch">
+              {t.hero.btn_services}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#contacto" class="btn-secondary btn-glitch">{t.hero.btn_contact}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <div class="w-px h-12 bg-gradient-to-b from-transparent to-cyber-orange/50"></div>
+    <span class="font-mono text-[9px] text-cyber-text uppercase tracking-widest">{t.hero.scroll}</span>
+  </div>
+</section>
+
+<!-- ═══════════════ TICKER ═══════════════ -->
+<div class="border-y border-cyber-border py-4 overflow-hidden bg-cyber-dark/50">
+  <div class="ticker-track">
+    {[...tickerItems, ...tickerItems].map((item) => (
+      <span class="inline-flex items-center gap-4 px-6 font-mono text-sm text-cyber-text whitespace-nowrap">
+        <span class="ticker-sep flex-shrink-0 flex items-center gap-[2px] text-cyber-orange font-bold text-xs" aria-hidden="true">
+          <span class="inline-block -skew-x-12">///</span>
+        </span>
+        {item}
+      </span>
+    ))}
+  </div>
+</div>
+
+<!-- ═══════════════ SERVICIOS ═══════════════ -->
+<section id="servicios" class="py-32 relative">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-20">
+      <div class="section-number mb-4">{t.servicios.section_label}</div>
+      <h2 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[0.95] tracking-tight">
+        {t.servicios.title_line1}<br/>
+        <span class="text-cyber-teal glow-teal">{t.servicios.title_line2}</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {t.servicios.items.map((service: any) => (
+        <div class="card-brutal p-8 flex flex-col h-full">
+          <div class="flex items-baseline justify-between mb-6">
+            <span class="font-mono text-[10px] text-cyber-teal uppercase tracking-widest">{service.label}</span>
+            <span class="text-5xl font-black text-cyber-white/[0.07]">{service.num}</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-cyber-white">{service.title}</h3>
+          <p class="text-sm text-cyber-text leading-relaxed mb-6 flex-1">{service.description}</p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            {service.tags.map((tag: string) => (
+              <span class="font-mono text-[10px] px-2 py-1 border border-cyber-border text-cyber-text">{tag}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROCESO ═══════════════ -->
+<section id="proceso" class="py-32 border-t border-cyber-border relative">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-20">
+      <div class="section-number mb-4">{t.proceso.section_label}</div>
+      <h2 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[0.95] tracking-tight mb-4">
+        {t.proceso.title}
+      </h2>
+      <p class="text-cyber-text max-w-lg font-light">
+        {t.proceso.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      {t.proceso.steps.map((step: any) => (
+        <div class="card-brutal p-6 group">
+          <span class="text-4xl font-black text-cyber-orange/80 block mb-4">{step.num}</span>
+          <h3 class="font-mono text-sm font-bold tracking-wider mb-3 text-cyber-white">{step.title}</h3>
+          <p class="text-xs text-cyber-text leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="#contacto" class="btn-secondary text-xs">
+        {t.proceso.btn_start}
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PORTFOLIO ═══════════════ -->
+<section id="portfolio" class="py-32 border-t border-cyber-border relative">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-20">
+      <div class="section-number mb-4">{t.portfolio.section_label}</div>
+      <h2 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[0.95] tracking-tight mb-4">
+        {t.portfolio.title}
+      </h2>
+      <p class="text-cyber-text max-w-lg font-light">
+        {t.portfolio.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {t.portfolio.items.map((item: any, i: number) => (
+        <div class="group relative aspect-[4/3] overflow-hidden border border-cyber-border cursor-pointer">
+          <img
+            src={portfolioImages[i]}
+            alt={item.title}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-30"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-cyber-black via-cyber-black/50 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8 transition-all duration-500">
+            <span class="font-mono text-[10px] text-cyber-orange uppercase tracking-widest block mb-2">{item.category}</span>
+            <h3 class="text-2xl font-black tracking-tight text-cyber-white">{item.title}</h3>
+          </div>
+          <div class="absolute inset-4 border border-cyber-orange/0 group-hover:border-cyber-orange/30 transition-all duration-500 pointer-events-none"></div>
+          <div class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center border border-cyber-border opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:border-cyber-orange">
+            <svg class="w-4 h-4 text-cyber-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STUDIO ═══════════════ -->
+<section id="studio" class="py-32 border-t border-cyber-border relative">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-16">
+      <div class="section-number mb-4">{t.studio.section_label}</div>
+      <div class="section-divider mb-8"></div>
+      <h2 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[0.95] tracking-tight mb-4">
+        {t.studio.title}
+      </h2>
+      <p class="text-cyber-text text-lg font-light uppercase tracking-wider">
+        {t.studio.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+      <div>
+        <div class="font-mono text-[10px] text-cyber-text uppercase tracking-widest mb-6">{t.studio.philosophy_label}</div>
+        <blockquote class="text-2xl md:text-3xl font-bold leading-snug mb-8 text-cyber-white">
+          &ldquo;{t.studio.blockquote}&rdquo;
+        </blockquote>
+        <p class="text-sm text-cyber-text leading-relaxed mb-4">
+          {t.studio.description}
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-cyber-border">
+          <div>
+            <span class="text-3xl font-black">{t.studio.stat1_value}</span><span class="text-cyber-orange text-xl font-bold">{t.studio.stat1_suffix}</span>
+            <div class="font-mono text-[9px] text-cyber-text uppercase tracking-widest mt-1">{t.studio.stat1_label}</div>
+          </div>
+          <div>
+            <span class="text-3xl font-black">{t.studio.stat2_value}</span><span class="text-cyber-orange text-xl font-bold">{t.studio.stat2_suffix}</span>
+            <div class="font-mono text-[9px] text-cyber-text uppercase tracking-widest mt-1">{t.studio.stat2_label}</div>
+          </div>
+          <div>
+            <span class="text-3xl font-black">{t.studio.stat3_value}</span><span class="text-cyber-orange text-xl font-bold">{t.studio.stat3_suffix}</span>
+            <div class="font-mono text-[9px] text-cyber-text uppercase tracking-widest mt-1">{t.studio.stat3_label}</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="font-mono text-[10px] text-cyber-text uppercase tracking-widest mb-6">{t.studio.values_label}</div>
+        <div class="space-y-8">
+          {t.studio.values.map((value: any) => (
+            <div class="flex gap-6 items-start">
+              <span class="text-5xl font-black text-cyber-orange/70 leading-none flex-shrink-0">{value.num}</span>
+              <div>
+                <h3 class="text-xl font-black tracking-tight mb-2">{value.title}</h3>
+                <p class="text-sm text-cyber-text leading-relaxed">{value.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACTO ═══════════════ -->
+<section id="contacto" class="py-32 border-t border-cyber-border relative">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-16">
+      <div class="section-number mb-4">{t.contacto.section_label}</div>
+      <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-black leading-tight mb-4">
+        {t.contacto.title}
+      </h2>
+      <p class="text-cyber-text max-w-lg font-light">
+        {t.contacto.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="card-brutal p-8">
+        <form id="contact-form" class="space-y-6" action="mailto:hola@cibai.studio" method="POST" enctype="text/plain">
+          <div>
+            <label for="contact-name" class="font-mono text-[10px] text-cyber-text uppercase tracking-widest block mb-2">{t.contacto.label_nombre}</label>
+            <input type="text" id="contact-name" name="nombre" required
+              class="w-full bg-cyber-black border border-cyber-border px-4 py-3 font-mono text-sm text-cyber-white focus:border-cyber-orange focus:outline-none transition-colors placeholder:text-cyber-text/30"
+              placeholder={t.contacto.placeholder_nombre} />
+          </div>
+          <div>
+            <label for="contact-email" class="font-mono text-[10px] text-cyber-text uppercase tracking-widest block mb-2">{t.contacto.label_email}</label>
+            <input type="email" id="contact-email" name="email" required
+              class="w-full bg-cyber-black border border-cyber-border px-4 py-3 font-mono text-sm text-cyber-white focus:border-cyber-orange focus:outline-none transition-colors placeholder:text-cyber-text/30"
+              placeholder={t.contacto.placeholder_email} />
+          </div>
+          <div>
+            <label for="contact-project" class="font-mono text-[10px] text-cyber-text uppercase tracking-widest block mb-2">{t.contacto.label_proyecto}</label>
+            <select id="contact-project" name="proyecto"
+              class="w-full bg-cyber-black border border-cyber-border px-4 py-3 font-mono text-sm text-cyber-white focus:border-cyber-orange focus:outline-none transition-colors">
+              <option value="web">{t.contacto.option_web}</option>
+              <option value="webapp">{t.contacto.option_webapp}</option>
+              <option value="ecommerce">{t.contacto.option_ecommerce}</option>
+              <option value="automatizacion">{t.contacto.option_automatizacion}</option>
+              <option value="otro">{t.contacto.option_otro}</option>
+            </select>
+          </div>
+          <div>
+            <label for="contact-message" class="font-mono text-[10px] text-cyber-text uppercase tracking-widest block mb-2">{t.contacto.label_mensaje}</label>
+            <textarea id="contact-message" name="mensaje" rows="4" required
+              class="w-full bg-cyber-black border border-cyber-border px-4 py-3 font-mono text-sm text-cyber-white focus:border-cyber-orange focus:outline-none transition-colors resize-none placeholder:text-cyber-text/30"
+              placeholder={t.contacto.placeholder_mensaje}></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full justify-center">
+            {t.contacto.btn_enviar}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="card-brutal p-0 overflow-hidden flex flex-col">
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-cyber-border bg-cyber-gray/50">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyber-red/80"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cyber-orange/80"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cyber-teal/80"></span>
+          <span class="font-mono text-[10px] text-cyber-text/60 ml-2">{t.contacto.terminal_path}</span>
+        </div>
+        <div class="p-6 font-mono text-xs leading-relaxed flex-1 overflow-auto" id="terminal-output">
+          <div class="text-cyber-teal">$ cat info.txt</div>
+          <div class="mt-2 text-cyber-text/80">
+            <div><span class="text-cyber-orange">EMPRESA:</span> {t.contacto.terminal_empresa}</div>
+            <div><span class="text-cyber-orange">UBICACIÓN:</span> {t.contacto.terminal_ubicacion}</div>
+            <div><span class="text-cyber-orange">EMAIL:</span> {t.contacto.terminal_email}</div>
+            <div><span class="text-cyber-orange">HORARIO:</span> {t.contacto.terminal_horario}</div>
+            <div><span class="text-cyber-orange">STATUS:</span> <span class="text-cyber-teal">{t.contacto.terminal_status}</span></div>
+          </div>
+          <div class="mt-4 text-cyber-teal">$ uptime</div>
+          <div class="mt-1 text-cyber-text/80">{t.contacto.terminal_uptime}</div>
+          <div class="mt-4 text-cyber-teal">$ cat respuesta.md</div>
+          <div class="mt-1 text-cyber-text/80">
+            <div>{t.contacto.terminal_respuesta1}</div>
+            <div>{t.contacto.terminal_respuesta2}</div>
+            <div>{t.contacto.terminal_respuesta3}</div>
+          </div>
+          <div class="mt-4 text-cyber-teal">$ <span class="typing-cursor text-cyber-orange">█</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="border-t border-cyber-border">
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="text-lg font-bold text-cyber-white">CIBAI</span>
+          <span class="text-lg font-bold text-cyber-orange">.</span>
+          <span class="text-lg font-light text-cyber-orange">STUDIO</span>
+        </div>
+        <p class="text-sm text-cyber-text max-w-sm leading-relaxed mb-4">
+          {t.footer.descripcion}
+        </p>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-cyber-teal/30 bg-cyber-teal/5">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyber-teal animate-pulse"></span>
+          <span class="font-mono text-[10px] text-cyber-teal uppercase tracking-widest">{t.footer.disponibles}</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="font-mono text-[10px] text-cyber-text uppercase tracking-widest mb-4">{t.footer.nav_label}</div>
+        <div class="space-y-3">
+          <a href="#" class="block text-sm text-cyber-text hover:text-cyber-white transition-colors">{t.footer.link_inicio}</a>
+          <a href="#servicios" class="block text-sm text-cyber-text hover:text-cyber-white transition-colors">{t.footer.link_servicios}</a>
+          <a href="#portfolio" class="block text-sm text-cyber-text hover:text-cyber-white transition-colors">{t.footer.link_portfolio}</a>
+          <a href="#studio" class="block text-sm text-cyber-text hover:text-cyber-white transition-colors">{t.footer.link_studio}</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="font-mono text-[10px] text-cyber-text uppercase tracking-widest mb-4">{t.footer.legal_label}</div>
+        <div class="space-y-3">
+          <a href={getLocalizedPath('/privacidad', locale)} class="block text-sm text-cyber-text hover:text-cyber-white transition-colors">{t.footer.link_privacidad}</a>
+          <a href={getLocalizedPath('/aviso-legal', locale)} class="block text-sm text-cyber-text hover:text-cyber-white transition-colors">{t.footer.link_aviso}</a>
+          <a href={getLocalizedPath('/cookies', locale)} class="block text-sm text-cyber-text hover:text-cyber-white transition-colors">{t.footer.link_cookies}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-cyber-border overflow-hidden">
+    <div class="mx-auto max-w-7xl px-6 py-8">
+      <div class="text-[clamp(3rem,12vw,10rem)] font-black leading-none tracking-tighter text-cyber-white/[0.04] select-none whitespace-nowrap">
+        CIBAI.STUDIO
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-cyber-border">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
+      <span class="font-mono text-[10px] text-cyber-text">{t.footer.copyright}</span>
+      <span class="font-mono text-[10px] text-cyber-text">{t.footer.made_in}</span>
+    </div>
+  </div>
+</footer>
+
+<script define:vars={{ typingLines: [t.hero.typing_line1, t.hero.typing_line2, t.hero.typing_line3], formSuccess: t.contacto.form_success }}>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      const lines = menuBtn.querySelectorAll('.mobile-menu-line');
+      if (!isOpen) {
+        lines[0]?.classList.add('translate-y-[4px]', 'rotate-45');
+        lines[1]?.classList.add('opacity-0');
+        lines[2]?.classList.add('-translate-y-[4px]', '-rotate-45');
+      } else {
+        lines[0]?.classList.remove('translate-y-[4px]', 'rotate-45');
+        lines[1]?.classList.remove('opacity-0');
+        lines[2]?.classList.remove('-translate-y-[4px]', '-rotate-45');
+      }
+    });
+
+    mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        const lines = menuBtn.querySelectorAll('.mobile-menu-line');
+        lines[0]?.classList.remove('translate-y-[4px]', 'rotate-45');
+        lines[1]?.classList.remove('opacity-0');
+        lines[2]?.classList.remove('-translate-y-[4px]', '-rotate-45');
+      });
+    });
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in-up');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card-brutal').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
+  });
+
+  // HUD Clock
+  const clockEl = document.getElementById('hud-clock');
+  if (clockEl) {
+    const updateClock = () => {
+      clockEl.textContent = new Date().toLocaleTimeString('es-ES', { hour12: false });
+    };
+    updateClock();
+    setInterval(updateClock, 1000);
+  }
+
+  // Typing effect
+  const typingEl = document.getElementById('typing-text');
+  if (typingEl) {
+    let lineIdx = 0, charIdx = 0, currentText = '';
+    const typeChar = () => {
+      if (lineIdx >= typingLines.length) return;
+      if (charIdx < typingLines[lineIdx].length) {
+        currentText += typingLines[lineIdx][charIdx];
+        typingEl.textContent = currentText;
+        charIdx++;
+        setTimeout(typeChar, 30 + Math.random() * 40);
+      } else {
+        currentText += '\n';
+        lineIdx++;
+        charIdx = 0;
+        if (lineIdx < typingLines.length) setTimeout(typeChar, 400);
+      }
+    };
+    setTimeout(typeChar, 1200);
+  }
+
+  // Hero Slider
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const heroDots = document.querySelectorAll('.hero-dot');
+  const heroProgress = document.getElementById('hero-progress');
+  const heroCounter = document.getElementById('hero-slide-counter');
+  const SLIDE_DURATION = 6000;
+  let currentSlide = 0;
+  let slideTimer = null;
+
+  function setSlide(idx) {
+    heroSlides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    heroDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    if (heroCounter) heroCounter.textContent = `0${idx + 1} / 0${heroSlides.length}`;
+    currentSlide = idx;
+    startProgress();
+  }
+
+  function startProgress() {
+    if (!heroProgress) return;
+    heroProgress.classList.remove('running');
+    heroProgress.style.transitionDuration = '0ms';
+    heroProgress.style.width = '0%';
+    void heroProgress.offsetWidth;
+    heroProgress.style.transitionDuration = `${SLIDE_DURATION}ms`;
+    heroProgress.classList.add('running');
+    heroProgress.style.width = '100%';
+    if (slideTimer) clearTimeout(slideTimer);
+    slideTimer = setTimeout(() => setSlide((currentSlide + 1) % heroSlides.length), SLIDE_DURATION);
+  }
+
+  heroDots.forEach(dot => {
+    dot.addEventListener('click', () => setSlide(parseInt(dot.dataset.slide || '0', 10)));
+  });
+
+  if (heroSlides.length > 1) startProgress();
+
+  // Contact form
+  const contactForm = document.getElementById('contact-form');
+  const terminalOutput = document.getElementById('terminal-output');
+  if (contactForm && terminalOutput) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name')?.value || '';
+      const email = document.getElementById('contact-email')?.value || '';
+      const project = document.getElementById('contact-project')?.value || '';
+      const message = document.getElementById('contact-message')?.value || '';
+
+      const esc = (s) => { const d = document.createElement('span'); d.textContent = s; return d.innerHTML; };
+      const echo = document.createElement('div');
+      echo.innerHTML = `
+        <div class="mt-4 text-cyber-teal">$ send_project --from="${esc(name)}"</div>
+        <div class="mt-1 text-cyber-text/80">
+          <div><span class="text-cyber-orange">FROM:</span> ${esc(name)} &lt;${esc(email)}&gt;</div>
+          <div><span class="text-cyber-orange">TYPE:</span> ${esc(project)}</div>
+          <div><span class="text-cyber-orange">MSG:</span> ${esc(message.slice(0, 80))}${message.length > 80 ? '...' : ''}</div>
+          <div class="mt-1 text-cyber-teal">&#10003; ${formSuccess}</div>
+        </div>
+      `;
+      const lastLine = terminalOutput.querySelector(':scope > div:last-child');
+      if (lastLine) lastLine.remove();
+      terminalOutput.appendChild(echo);
+
+      const cursor = document.createElement('div');
+      cursor.className = 'mt-4 text-cyber-teal';
+      cursor.innerHTML = '$ <span class="typing-cursor text-cyber-orange">█</span>';
+      terminalOutput.appendChild(cursor);
+      contactForm.reset();
+      window.location.href = `mailto:hola@cibai.studio?subject=Proyecto: ${project}&body=Nombre: ${name}%0AEmail: ${email}%0A%0A${encodeURIComponent(message)}`;
+    });
+  }
+</script>

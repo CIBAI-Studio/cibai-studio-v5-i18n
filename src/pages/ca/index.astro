@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HomePage from '../../components/HomePage.astro';
+import '../../styles/global.css';
+import { getTranslations } from '../../i18n';
+
+const t = getTranslations('ca');
+---
+
+<Layout title={t.meta.title} description={t.meta.description} locale="ca">
+  <HomePage locale="ca" />
+</Layout>
