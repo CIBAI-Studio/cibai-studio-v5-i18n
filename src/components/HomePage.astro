@@ -2,6 +2,7 @@
 import type { Locale } from '../i18n';
 import { getTranslations, getLocalizedPath } from '../i18n';
 import LanguageSelector from './LanguageSelector.astro';
+import { loadSettings, lightenColor } from '../lib/settings';
 
 interface Props {
   locale: Locale;
@@ -9,6 +10,11 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getTranslations(locale);
+const settings = loadSettings();
+const heroSlideDurationMs = settings.parameters.heroSlideDuration * 1000;
+const primaryColor = settings.visual.primaryColor;
+const secondaryColor = settings.visual.secondaryColor;
+const primaryColorLight = lightenColor(primaryColor, 30);
 
 const portfolioImages = [
   'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop',
@@ -21,7 +27,7 @@ const tickerItems = ['ASTRO', 'NEXT.JS', 'REACT', 'TAILWIND', 'TYPESCRIPT', 'NOD
 ---
 
 <!-- ═══════════════ TOP BAR (HUD) ═══════════════ -->
-<div class="fixed top-0 left-0 right-0 z-50 bg-cyber-black border-b border-cyber-border/50">
+<div class="fixed top-0 left-0 right-0 z-50 bg-cyber-black border-b border-cyber-border">
   <div class="mx-auto max-w-7xl px-6 flex items-center justify-between h-8">
     <div class="flex items-center gap-4">
       <span class="hud-blink inline-block w-1.5 h-1.5 rounded-full bg-cyber-teal"></span>
@@ -51,27 +57,29 @@ const tickerItems = ['ASTRO', 'NEXT.JS', 'REACT', 'TAILWIND', 'TYPESCRIPT', 'NOD
       <span class="text-lg font-bold tracking-tight text-cyber-orange">.</span>
       <span class="text-lg font-light tracking-tight text-cyber-orange">STUDIO</span>
     </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#main-content" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.inicio}</a>
-      <a href="#servicios" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.servicios}</a>
-      <a href="#proceso" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.proceso}</a>
-      <a href="#portfolio" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.portfolio}</a>
-      <a href="#studio" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.studio}</a>
-    </div>
-    <div class="flex items-center gap-3">
-      <LanguageSelector currentLocale={locale} />
-      <a href="#contacto" class="btn-primary text-xs py-2 px-5 hidden sm:inline-flex">{t.nav.proyecto}</a>
-      <button
-        id="mobile-menu-btn"
-        class="md:hidden flex flex-col justify-center items-center w-10 h-10 border border-cyber-border hover:border-cyber-orange transition-colors"
-        aria-label={t.nav.abrir_menu}
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300"></span>
-        <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300 mt-1.5"></span>
-        <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300 mt-1.5"></span>
-      </button>
+    <div class="flex items-center gap-6">
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#main-content" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.inicio}</a>
+        <a href="#servicios" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.servicios}</a>
+        <a href="#proceso" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.proceso}</a>
+        <a href="#portfolio" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.portfolio}</a>
+        <a href="#studio" class="font-mono text-xs uppercase tracking-widest text-cyber-text hover:text-cyber-white transition-colors">{t.nav.studio}</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <LanguageSelector currentLocale={locale} />
+        <a href="#contacto" class="btn-primary text-xs py-2 px-5 hidden sm:inline-flex">{t.nav.proyecto}</a>
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 border border-cyber-border hover:border-cyber-orange transition-colors"
+          aria-label={t.nav.abrir_menu}
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300"></span>
+          <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300 mt-1.5"></span>
+          <span class="mobile-menu-line block w-5 h-px bg-cyber-white transition-all duration-300 mt-1.5"></span>
+        </button>
+      </div>
     </div>
   </div>
   <div id="mobile-menu" class="md:hidden hidden border-t border-cyber-border bg-cyber-black/95 backdrop-blur-md">
@@ -90,7 +98,7 @@ const tickerItems = ['ASTRO', 'NEXT.JS', 'REACT', 'TAILWIND', 'TYPESCRIPT', 'NOD
 
 <!-- ═══════════════ HERO ═══════════════ -->
 <section id="main-content" class="relative min-h-[90vh] flex flex-col justify-start pt-32 pb-8 overflow-hidden hero-section">
-  <div class="absolute inset-0 opacity-[0.03] hero-bg-grid" style="background-image: linear-gradient(rgba(255,77,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,77,0,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  <div class="absolute inset-0 opacity-[0.03] hero-bg-grid" style={`background-image: linear-gradient(color-mix(in srgb, ${primaryColor} 30%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, ${primaryColor} 30%, transparent) 1px, transparent 1px); background-size: 60px 60px;`}></div>
 
   <div class="mx-auto max-w-7xl px-6 w-full">
     <div class="relative" style="min-height: 420px;" id="hero-slider">
@@ -496,7 +504,7 @@ const tickerItems = ['ASTRO', 'NEXT.JS', 'REACT', 'TAILWIND', 'TYPESCRIPT', 'NOD
   </div>
 </footer>
 
-<script define:vars={{ typingLines: [t.hero.typing_line1, t.hero.typing_line2, t.hero.typing_line3], formSuccess: t.contacto.form_success }}>
+<script define:vars={{ typingLines: [t.hero.typing_line1, t.hero.typing_line2, t.hero.typing_line3], formSuccess: t.contacto.form_success, heroSlideDurationMs }}>
   // Mobile menu toggle
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -592,7 +600,7 @@ const tickerItems = ['ASTRO', 'NEXT.JS', 'REACT', 'TAILWIND', 'TYPESCRIPT', 'NOD
   const heroDots = document.querySelectorAll('.hero-dot');
   const heroProgress = document.getElementById('hero-progress');
   const heroCounter = document.getElementById('hero-slide-counter');
-  const SLIDE_DURATION = 6000;
+  const SLIDE_DURATION = heroSlideDurationMs;
   let currentSlide = 0;
   let slideTimer = null;
 

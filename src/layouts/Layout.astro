@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../i18n';
 import { getTranslations } from '../i18n';
+import { loadSettings, lightenColor } from '../lib/settings';
 
 interface Props {
   title: string;
@@ -12,6 +13,10 @@ const { title, description, locale = 'es' } = Astro.props;
 const t = getTranslations(locale);
 const siteUrl = 'https://cibai.studio';
 const ogLocale = locale === 'ca' ? 'ca_ES' : 'es_ES';
+const settings = loadSettings();
+const primaryColor = settings.visual.primaryColor;
+const primaryColorLight = lightenColor(primaryColor, 30);
+const secondaryColor = settings.visual.secondaryColor;
 ---
 
 <!doctype html>
@@ -43,6 +48,15 @@ const ogLocale = locale === 'ca' ? 'ca_ES' : 'es_ES';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title}</title>
+
+    <!-- Dynamic color overrides from admin settings -->
+    <style set:html={`
+      :root {
+        --color-cyber-orange: ${primaryColor};
+        --color-cyber-orange-light: ${primaryColorLight};
+        --color-cyber-teal: ${secondaryColor};
+      }
+    `}></style>
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
